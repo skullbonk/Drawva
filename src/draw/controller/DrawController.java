@@ -5,10 +5,10 @@ import draw.model.*;
 
 public class DrawController
 {
-
+	private DrawFrame frame;
 	public DrawController()
 	{
-		// TODO Auto-generated constructor stub
+		frame = new DrawFrame(this);
 	}
 	
 	public void start()
