@@ -41,6 +41,7 @@ public class DrawAppPanel
 	{
 		super();
 		this.app = app;
+		canvas = new DrawPanel(app);
 		
 	}
 	
@@ -140,10 +141,11 @@ public class DrawAppPanel
 	private void setupListeners()
 	{
 		canvas.addMouseListener(new MouseListener()
-				{
+		{
+			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				
+				canvas.drawDot(e.getX(), e.getY(), widthSlider.getValue());
 			}
 			
 			public void mousePressed(MouseEvent e)
@@ -151,22 +153,25 @@ public class DrawAppPanel
 				
 			}
 			
+			@Override
 			public void mouseReleased(MouseEvent e)
 			{
-				
+				canvas.resetPoint();
 			}
 			
+			@Override
 			public void mouseEntered(MouseEvent e)
 			{
-				
+				canvas.resetPoint();
 			}
 			
+			@Override
 			public void mouseExited(MouseEvent e)
 			{
-				
+				canvas.resetPoint();
 			}
 			
-				});
+		});
 		
 		canvas.addMouseMotionListener(new MouseMotionListener()
 		{

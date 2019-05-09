@@ -79,6 +79,30 @@ public class DrawPanel
 		}
 	}
 	
+	
+	public void saveImage()
+	{
+		try
+		{
+			JFileChooser saveDialog = new JFileChooser();
+			saveDialog.showSaveDialog(this);
+			String savePath = saveDialog.getSelectedFile().getPath();
+			if(!savePath.endsWith(".png"))
+			{
+				savePath += ".png";
+			}
+			ImageIO.write(currentCanvas, "PNG", new File(savePath));
+		}
+		catch (IOException error)
+		{
+			controller.handleErrors(error);
+		}
+		catch (NullPointerException badChoice)
+		{
+			controller.handleErrors(badChoice);
+		}
+	}
+	
 	private Color randomColor()
 	{
 		int red = (int)(Math.random() * 256);
